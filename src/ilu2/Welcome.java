@@ -4,10 +4,11 @@ public class Welcome {
 
 	public static String welcome(String input) {
 		StringBuilder hello = new StringBuilder();
-		String[] str = null;
 		hello.append("Hello, ");
-		input = input.trim();
-		if(input == null || input.isEmpty()) {
+		if(input == null) {
+			return EX_2(input, hello);
+		}else if(input.isBlank() || input.isEmpty()){
+			input = input.trim();
 			return EX_2(input, hello);
 		}else {
 			return EX_1(input, hello);

@@ -14,7 +14,7 @@ class WelcomeTest {
 	@Test
 	void EX_2() {
 		String result = "Hello, my friend";
-		//assertEquals(Welcome.welcome(null), result);
+		assertEquals(Welcome.welcome(null), result);
 		assertEquals(result, Welcome.welcome(""));
 		assertEquals(result, Welcome.welcome("   "));
 	}
