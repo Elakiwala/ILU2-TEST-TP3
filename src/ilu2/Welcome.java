@@ -1,5 +1,7 @@
 package ilu2;
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////// PENSER A MODIFIER LES NOMS DES COMMITS AVANT D'ENVOYER POUR QUE TOUT SOIT DANS LE BON ORDRE!!!!!
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 public class Welcome {
 
 	public static String welcome(String input) {
@@ -20,7 +22,11 @@ public class Welcome {
 					str = input.split(",");
 				}
 			}if(str != null && str.length != 0) {
-				return EX_4(input, hello, str);
+				if(str.length == 2) {
+					return EX_4(input, hello, str);
+				}else {
+					return EX_5(input, hello, str);
+				}
 			}else {
 				return EX_1(input, hello);
 			}
@@ -45,6 +51,12 @@ public class Welcome {
 	}
 	
 	private static String EX_4(String input, StringBuilder hello, String[] str) {
+		str[0] = str[0].substring(0, 1).toUpperCase() + str[0].substring(1);
+		str[1] = str[1].substring(0, 1).toUpperCase() + str[1].substring(1);
+		return hello.append(str[0] + ", " + str[1]).toString();
+	}
+	
+	private static String EX_5(String input, StringBuilder hello, String[] str) {
 		for(int j = 0; j < str.length; j++) {
 			String mot = str[j].trim(); 
 			mot = mot.substring(0, 1).toUpperCase() + mot.substring(1);
