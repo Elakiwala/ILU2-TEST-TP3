@@ -26,7 +26,7 @@ class WelcomeTest {
 	
 	@Test
 	void EX_4() {
-		//TODO
+		assertEquals("Hello, Amy, Bob", Welcome.welcome("amy,bob"));
 	}
 	
 	@Test

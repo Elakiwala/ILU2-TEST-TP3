@@ -14,11 +14,18 @@ public class Welcome {
 		}else if(input.length() != 0) {
 			if(input.equals(input.toUpperCase())) {
 				return EX_3(input, hello);
+			}
+			for(int i = 0; i < input.length(); i++) {
+				if(input.charAt(i) == ',') {
+					str = input.split(",");
+				}
+			}if(str != null && str.length != 0) {
+				return EX_4(input, hello, str);
 			}else {
 				return EX_1(input, hello);
 			}
 		}
-		return input;
+		return EX_1(input, hello);
 	}
 	
 	
@@ -35,5 +42,17 @@ public class Welcome {
 	private static String EX_3(String input, StringBuilder hello) {
 		hello.append(input + " !");
 		return hello.toString().toUpperCase();
+	}
+	
+	private static String EX_4(String input, StringBuilder hello, String[] str) {
+		for(int j = 0; j < str.length; j++) {
+			String mot = str[j].trim(); 
+			mot = mot.substring(0, 1).toUpperCase() + mot.substring(1);
+			str[j] = mot;
+		}
+		for(int i = 0; i<str.length; i++) {
+			hello.append(str[i] + ", ");
+		}
+		return hello.delete(hello.length()-2, hello.length()).toString();
 	}
 }
