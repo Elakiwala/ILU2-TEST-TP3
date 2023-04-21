@@ -8,12 +8,15 @@ class WelcomeTest {
 
 	@Test
 	void EX_1() {
-		assertEquals(Welcome.welcome("bob"), "Hello, Bob");
+		assertEquals("Hello, Bob", Welcome.welcome("bob"));
 	}
 	
 	@Test
 	void EX_2() {
-		//TODO
+		String result = "Hello, my friend";
+		//assertEquals(Welcome.welcome(null), result);
+		assertEquals(result, Welcome.welcome(""));
+		assertEquals(result, Welcome.welcome("   "));
 	}
 
 	@Test
