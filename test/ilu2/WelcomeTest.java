@@ -21,7 +21,7 @@ class WelcomeTest {
 
 	@Test
 	void EX_3() {
-		//TODO
+		assertEquals("HELLO, JERRY !", Welcome.welcome("JERRY"));
 	}
 	
 	@Test
