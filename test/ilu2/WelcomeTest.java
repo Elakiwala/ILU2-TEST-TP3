@@ -36,26 +36,28 @@ class WelcomeTest {
 	
 	@Test
 	void EX_6() {
-		//TODO
+		assertEquals("Hello, Amy, Jerry. AND HELLO, BOB !", Welcome.welcome("Amy, BOB, Jerry"));
 	}
 	
 	@Test
 	void EX_7() {
-		//TODO
+		//TODO assertEquals("Hello, Bob, Amy and Jerry", Welcome.welcome("bob, amy, jerry"));
+		//assertEquals("Hello bob and jerry. AND HELLO AMY AND JACK !", Welcome.welcome("bob, AMY, jerry, JACK"));
 	}
 	
 	@Test
 	void EX_8() {
-		//TODO
+		//TODO assertEquals("Hello, Bob and Amy", Welcome.welcome("bob        , amy    "));
 	}
 	
 	@Test
 	void EX_9() {
-		//TODO
+		//TODO assertEquals("Hello, Bob (x3), and Amy. AND HELLO JERRY (x2)", Welcome.welcome("bob, JERRY, amy, bob, JERYY, bob"));
 	}
 	
 	@Test
 	void EX_10() {
-		//TODO
+		//TODO assertEquals("Bob, Yoda, and Amy, Hello AND HELLO JERRY"));
+		//assertEquals("Hello, Bob and Amy. AND YODA (x2) AND JERRY HELLO !", Welcome.welcome("bob, YODA, amy, JERRY, YODA"));
 	}
 }

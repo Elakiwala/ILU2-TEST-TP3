@@ -1,22 +1,23 @@
 package ilu2;
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////// PENSER A MODIFIER LES NOMS DES COMMITS AVANT D'ENVOYER POUR QUE TOUT SOIT DANS LE BON ORDRE!!!!!
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 public class Welcome {
 
 	public static String welcome(String input) {
 		StringBuilder hello = new StringBuilder();
 		String[] str = null;
 		hello.append("Hello, ");
+		//cas entrée nulle, vide ou blanche
 		if(input == null) {
 			return EX_2(input, hello);
 		}else if(input.isBlank() || input.isEmpty()){
 			input = input.trim();
 			return EX_2(input, hello);
 		}else if(input.length() != 0) {
+			//cas entrée ,1 mot, toute en MAJUSCULE
 			if(input.equals(input.toUpperCase())) {
 				return EX_3(input, hello);
 			}
+			//recherche des différents mots
 			for(int i = 0; i < input.length(); i++) {
 				if(input.charAt(i) == ',') {
 					str = input.split(",");
@@ -25,10 +26,21 @@ public class Welcome {
 				if(str.length == 2) {
 					return EX_4(input, hello, str);
 				}else {
-					return EX_5(input, hello, str);
+					int countMaj = 0;
+					for(int i = 0; i < str.length; i++) {
+						if(str[i].equals(str[i].toUpperCase())) {
+							countMaj++;
+						}
+					}
+					if(countMaj == 0){
+						return EX_5(hello, str);
+					}else {
+						return EX_6(input, hello, str, countMaj);
+					}
 				}
 			}else {
 				return EX_1(input, hello);
+				
 			}
 		}
 		return EX_1(input, hello);
@@ -56,7 +68,7 @@ public class Welcome {
 		return hello.append(str[0] + ", " + str[1]).toString();
 	}
 	
-	private static String EX_5(String input, StringBuilder hello, String[] str) {
+	private static String EX_5(StringBuilder hello, String[] str) {
 		for(int j = 0; j < str.length; j++) {
 			String mot = str[j].trim(); 
 			mot = mot.substring(0, 1).toUpperCase() + mot.substring(1);
@@ -66,5 +78,28 @@ public class Welcome {
 			hello.append(str[i] + ", ");
 		}
 		return hello.delete(hello.length()-2, hello.length()).toString();
+	}
+	
+	private static String EX_6(String input, StringBuilder hello, String[] str, int countMaj) {
+		String[] maju = new String[countMaj];
+		String[] minu = new String[str.length - countMaj];
+		int decountMaj = 0;
+		int decountMin = 0;
+		for(int i = 0; i < str.length; i++) {
+			if(str[i].equals(str[i].toUpperCase())) {
+				if(decountMaj < countMaj) {
+					maju[decountMaj] = str[i].trim();
+					decountMaj++;
+				}
+			}else {
+				if(decountMin < minu.length) {
+					minu[decountMin] = str[i].trim();
+					decountMin++;
+				}
+			}
+		}
+		StringBuilder hi = new StringBuilder();
+		hi.append("Hello, ");
+		return EX_5(hello, minu) + ". AND " + EX_5(hi, maju).toUpperCase() + " !";
 	}
 }
