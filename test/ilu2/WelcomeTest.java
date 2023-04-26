@@ -51,7 +51,7 @@ class WelcomeTest {
 	
 	@Test
 	void EX_8() {
-		//TODOassertEquals("Hello, Bob and Amy", Welcome.welcome("bob        , amy    "));
+		assertEquals("Hello, Bob and Amy", Welcome.welcome("bob        , amy    "));
 	}
 	
 	@Test
