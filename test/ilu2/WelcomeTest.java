@@ -9,6 +9,9 @@ class WelcomeTest {
 	@Test
 	void EX_1() {
 		assertEquals("Hello, Bob", Welcome.welcome("bob"));
+		assertEquals("Hello, Eva", Welcome.welcome("eva"));
+		assertNotEquals("Hello, eva", Welcome.welcome("eva"));
+		assertNotEquals("Hello, Eva, Martha", Welcome.welcome("eva, martha"));
 	}
 	
 	@Test
@@ -17,6 +20,7 @@ class WelcomeTest {
 		assertEquals(Welcome.welcome(null), result);
 		assertEquals(result, Welcome.welcome(""));
 		assertEquals(result, Welcome.welcome("   "));
+		assertNotEquals(result, Welcome.welcome("bob"));
 	}
 
 	@Test
@@ -26,28 +30,28 @@ class WelcomeTest {
 	
 	@Test
 	void EX_4() {
-		assertEquals("Hello, Amy, Bob", Welcome.welcome("amy,bob"));
+		assertEquals("Hello, Amy and Bob", Welcome.welcome("amy,bob"));
 	}
 	
 	@Test
 	void EX_5() {
-		assertEquals("Hello, Amy, Bob, Jerry", Welcome.welcome("Amy,bob,jerry"));
+		assertEquals("Hello, Amy, Bob and Jerry", Welcome.welcome("Amy,bob,jerry"));
 	}
 	
 	@Test
 	void EX_6() {
-		assertEquals("Hello, Amy, Jerry. AND HELLO, BOB !", Welcome.welcome("Amy, BOB, Jerry"));
+		assertEquals("Hello, Amy and Jerry. AND HELLO, BOB !", Welcome.welcome("Amy, BOB, Jerry"));
 	}
 	
 	@Test
 	void EX_7() {
-		//TODO assertEquals("Hello, Bob, Amy and Jerry", Welcome.welcome("bob, amy, jerry"));
-		//assertEquals("Hello bob and jerry. AND HELLO AMY AND JACK !", Welcome.welcome("bob, AMY, jerry, JACK"));
+		assertEquals("Hello, Bob, Amy and Jerry", Welcome.welcome("bob, amy, jerry"));
+		assertEquals("Hello, Bob and Jerry. AND HELLO AMY AND JACK !", Welcome.welcome("bob, AMY, jerry, JACK"));
 	}
 	
 	@Test
 	void EX_8() {
-		//TODO assertEquals("Hello, Bob and Amy", Welcome.welcome("bob        , amy    "));
+		//TODOassertEquals("Hello, Bob and Amy", Welcome.welcome("bob        , amy    "));
 	}
 	
 	@Test
